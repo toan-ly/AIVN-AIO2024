@@ -17,7 +17,7 @@ def calc_activation_func(x: float, act_name: str) -> float:
         alpha = 0.01
         return np.where(x > 0, x, alpha * (np.exp(x) - 1))
 
-def exercise2():
+def test_activations():
     x = input('Enter x: ')
     if not is_number(x):
         print('x must be a number')
@@ -33,7 +33,7 @@ def exercise2():
 
 
 if __name__ == '__main__':
-    exercise2()
+    test_activations()
     
     assert round(calc_sig(3), 2) == 0.95
     print(round(calc_sig(2), 2))

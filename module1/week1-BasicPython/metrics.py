@@ -19,7 +19,7 @@ def calc_f1_score(tp: int, fp: int, fn: int) -> float:
 
     return f1_score
 
-def exercise1(tp, fp, fn):
+def calc_metrics(tp, fp, fn):
     if not (isinstance(tp, int) and isinstance(fp, int) and isinstance(fn, int)):
         print('All inputs must be integers')
         return
@@ -37,11 +37,11 @@ def exercise1(tp, fp, fn):
    
 
 if __name__ == '__main__':
-    exercise1(tp=2, fp=3, fn=4) 
-    exercise1(tp=2, fp='a', fn=4)
-    exercise1(tp='a', fp=3, fn=4)
-    exercise1(tp=2, fp=3, fn=0)
-    exercise1(tp=2.1, fp=3, fn=0)
+    calc_metrics(tp=2, fp=3, fn=4) 
+    calc_metrics(tp=2, fp='a', fn=4)
+    calc_metrics(tp='a', fp=3, fn=4)
+    calc_metrics(tp=2, fp=3, fn=0)
+    calc_metrics(tp=2.1, fp=3, fn=0)
 
     print(round(calc_f1_score(tp='a', fp=2, fn=4), 2))
     print(round(calc_f1_score(tp=1.5, fp=5, fn=4), 2))

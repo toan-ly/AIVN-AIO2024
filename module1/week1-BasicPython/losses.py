@@ -10,14 +10,14 @@ def calc_se(y, y_hat):
         raise ValueError('Input must be numeric')
     return (y - y_hat) ** 2
 
-def md_nre_single_sample(y, y_hat, n, p):
+def calc_md_nre(y, y_hat, n, p):
     y_root = y ** (1/n)
     y_hat_root = y_hat ** (1/n)
     difference = y_root - y_hat_root
     loss = difference ** p
     return loss
 
-def exercise3():
+def calc_loss():
     n_samples = input('Input number of samples (int) which are generated: ')
     if not n_samples.isnumeric():
         print('Number of samples must be an integer number')
@@ -46,7 +46,7 @@ def exercise3():
     
 
 if __name__ == '__main__':
-    exercise3()
+    calc_loss()
     
     assert calc_ae(1, 6) == 5
     print(calc_ae(2, 9))
@@ -54,7 +54,7 @@ if __name__ == '__main__':
     assert calc_se(4, 2) == 4
     print(calc_se(2, 1))
 
-    print(md_nre_single_sample(y=100, y_hat=99.5, n=2, p=1))
-    print(md_nre_single_sample(y=50, y_hat=49.5, n=2, p=1))
-    print(md_nre_single_sample(y=20, y_hat=19.5, n=2, p=1))
-    print(md_nre_single_sample(y=0.6, y_hat=0.1, n=2, p=1))
+    print(calc_md_nre(y=100, y_hat=99.5, n=2, p=1))
+    print(calc_md_nre(y=50, y_hat=49.5, n=2, p=1))
+    print(calc_md_nre(y=20, y_hat=19.5, n=2, p=1))
+    print(calc_md_nre(y=0.6, y_hat=0.1, n=2, p=1))

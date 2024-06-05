@@ -30,21 +30,23 @@ def approx_sinh(x, n):
         sinh_x += (x ** (2 * i + 1)) / factorial(2 * i + 1)
     return sinh_x
 
-x = 3.14
-n = 10
-print(approx_sin(x, n))
-print(approx_cos(x, n))
-print(approx_sinh(x, n))
-print(approx_cosh(x, n))
 
-assert round(approx_cos(x=1, n=10), 2) == 0.54
-print(round(approx_cos(x=3.14, n=10), 2))
+if __name__ == '__main__':
+    x = 3.14
+    n = 10
+    print(approx_sin(x, n))
+    print(approx_cos(x, n))
+    print(approx_sinh(x, n))
+    print(approx_cosh(x, n))
 
-assert round(approx_sin(x=1, n=10), 4) == 0.8415
-print(round(approx_sin(x=3.14, n=10), 4))
+    assert round(approx_cos(x=1, n=10), 2) == 0.54
+    print(round(approx_cos(x=3.14, n=10), 2))
 
-assert round(approx_sinh(x=1, n=10), 2) == 1.18
-print(round(approx_sinh(x=3.14, n=10), 2))
+    assert round(approx_sin(x=1, n=10), 4) == 0.8415
+    print(round(approx_sin(x=3.14, n=10), 4))
 
-assert round(approx_cosh(x=1, n=10), 2) == 1.54
-print(round(approx_cosh(x=3.14, n=10), 2))
+    assert round(approx_sinh(x=1, n=10), 2) == 1.18
+    print(round(approx_sinh(x=3.14, n=10), 2))
+
+    assert round(approx_cosh(x=1, n=10), 2) == 1.54
+    print(round(approx_cosh(x=3.14, n=10), 2))
