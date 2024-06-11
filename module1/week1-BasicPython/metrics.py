@@ -43,8 +43,8 @@ if __name__ == '__main__':
     calc_metrics(tp=2, fp=3, fn=0)
     calc_metrics(tp=2.1, fp=3, fn=0)
 
-    print(round(calc_f1_score(tp='a', fp=2, fn=4), 2))
-    print(round(calc_f1_score(tp=1.5, fp=5, fn=4), 2))
+    # print(round(calc_f1_score(tp='a', fp=2, fn=4), 2))
+    # print(round(calc_f1_score(tp=1.5, fp=5, fn=4), 2))
     print(round(calc_f1_score(tp=-5, fp=5, fn=4), 2))
 
     assert round(calc_f1_score(tp=2, fp=3, fn=5), 2) == 0.33
