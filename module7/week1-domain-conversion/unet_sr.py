@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from torch import Tensor
+from torchvision import transforms
 
 
 def init_weights(module: nn.Module):
@@ -90,10 +91,13 @@ class UNet(nn.Module):
         n_channels: int = 3,
         n_classes: int = 3,
         features: list[int] = [64, 128, 256, 512, 1024],
-        use_skip: bool = True
+        use_skip: bool = True,
+        low_img_size: int = 64
     ):
         super(UNet, self).__init__()
 
+        self.resize_fn = transforms.Resize((low_img_size * 4, low_img_size * 4),
+                                           antialias=True)
         self.in_conv1 = FirstFeature(n_channels, features[0])
         self.in_conv2 = ConvBlock(features[0], features[0])
 
@@ -110,6 +114,8 @@ class UNet(nn.Module):
     def forward(self, x: Tensor) -> Tensor:
         skips = []
 
+        x = self.resize_fn(x)
+        
         # Encoding
         x = self.in_conv1(x)
         skips.append(self.in_conv2(x))
@@ -129,6 +135,10 @@ class UNet(nn.Module):
 
 if __name__ == '__main__':
     model = UNet()
-    input_tensor = torch.ones(2, 3, 256, 256)
+    input_tensor = torch.ones(2, 3, 64, 64)
     output = model(input_tensor)
     print("Output Shape:", output.shape)
+
+    model = UNet(use_skip=False)
+    output = model(input_tensor)
+    print("Output Shape without skip connection:", output.shape)
